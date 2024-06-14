@@ -3,6 +3,7 @@ import { gfm } from 'joplin-turndown-plugin-gfm';
 import { YarleOptions } from '../options';
 import { divRule, imagesRule, italicRule, newLineRule, spanRule, strikethroughRule, taskItemsRule, wikiStyleLinksRule } from './turndown-rules';
 import { taskListRule } from './turndown-rules/task-list-rule';
+import { encryptRule } from './turndown-rules/encrypt-rule';
 
 export const getTurndownService = (yarleOptions: YarleOptions) => {
 	// @ts-ignore
@@ -27,6 +28,7 @@ export const getTurndownService = (yarleOptions: YarleOptions) => {
 	turndownService.addRule('images', imagesRule);
 	turndownService.addRule('list', taskListRule);
 	turndownService.addRule('italic', italicRule);
+	turndownService.addRule('encrypt', encryptRule);
 
 	if (yarleOptions.keepMDCharactersOfENNotes) {
 		turndownService.escape = ((str: string) => str);
